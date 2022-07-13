@@ -28,11 +28,7 @@
 </style>
 <div class="topnav">
   <a href="<%= home_page_path%>">Gestión Financiera</a>
-  <a href="<%= home_realizedP_path%>">Pagos realizados</a>
-  <a href="#ppendig">Pagos Pendientes</a>
   <a><%= link_to 'Log out', destroy_user_session_path, method: :delete%></a>
   <a><%= link_to 'Account Settings', edit_user_registration_path %></a>
   <a class="text-white"><%= current_user.documentNumber %></a>
-
-
 </div>
