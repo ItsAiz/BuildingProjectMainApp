@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   end
   root "home#homepage" 
   get '/home', to: 'home#homepage', as:'home_page'
-  get '/realizedP', to: 'home#realizedP', as:'home_realizedP'
-  get '/prueba', to: 'prueba#prueba'
+  get '/pagosRealizados/:id', to: 'home#realizedP', as:'home_realizedP'
+  get '/pagosPendientes/:id', to: 'home#pendingP', as:'home_pendingP'
+  #get '/prueba', to: 'prueba#prueba'
  # get '/users/:documentNumber', to: 'registratons#findPropietario', as: 'users_find_propietario'
   
 end

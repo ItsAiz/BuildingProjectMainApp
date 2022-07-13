@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
   def cruce
-    puts 'entro'
     require 'json'
     require 'open-uri'
     
@@ -14,11 +13,8 @@ class HomeController < ApplicationController
         JSON.parse json_file
       end
     va = current_user.documentNumber
-    puts va
     json = json['apartament'].to_a
-    #@prueba = json[9]['Identificador'] == '2849888227'
     res = json.map{|o| o['CedulaPropietario']}
-    #pos = res.each_with_index.select{|o| o == va}
     pos = []
     counter = 0
     while counter<res.length
@@ -41,6 +37,13 @@ class HomeController < ApplicationController
   end
 
   def realizedP
+    @propiedades = cruce
+    @propiedad = params[:id]
+  end
+
+  def pendingP
+    @propiedades = cruce
+    @propiedadPending = params[:id]
   end
   
 end
