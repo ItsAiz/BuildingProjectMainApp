@@ -35,15 +35,25 @@ class HomeController < ApplicationController
     @count = 0
     @propiedades = cruce
   end
-
+  def getDepartments(arreglo, idPropiedad)
+    res = arreglo.map{|o| o['Identificador']}
+    pos = []
+    counter = 0
+    while counter<res.length
+      if res[counter] == idPropiedad
+        pos.push(counter)
+      end
+      counter = counter+1
+    end
+    propiedad = arreglo[pos[0]]
+    return propiedad
+  end
   def realizedP
-    @propiedades = cruce
-    @propiedad = params[:id]
+    @propiedad = getDepartments(cruce,params[:id])
   end
 
   def pendingP
-    @propiedades = cruce
-    @propiedadPending = params[:id]
+    @propiedadPending = getDepartments(cruce,params[:id])
   end
   
 end

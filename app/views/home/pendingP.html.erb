@@ -1,5 +1,26 @@
 <h2>Pagos pendientes</h2>
-<h4><%= @propiedadPending%></h4>
+<div class = "mt-3 mb-3" style="overflow-x:auto;">
+    <table class="table table-striped table-bordered border-dark productsTable" style="width: 100%;">
+    <thead class="table text-center" style="background: #202022; color: white">
+        <tr style="border-color: black">
+            <th>Identificador</th>
+            <th>Número de Apartamento</th>
+            <th>Número de Torre</th>
+            <th>Dimensión</th>
+            <th>índice de Copropiedad</th>
+        </tr>
+    </thead>
+    <tbody class="text-center">
+        <tr>
+            <td><%=@propiedadPending['Identificador']%></td>
+            <td><%=@propiedadPending['NumApto']%></td>
+            <td><%=@propiedadPending['NumTorre']%></td>
+            <td><%=@propiedadPending['Dimension']%></td>
+            <td><%=@propiedadPending['IndiceCopropiedad']%></td>
+        </tr>
+    </tbody>
+    </table>
+</div>
 <div class = "mt-3 mb-3" style="overflow-x:auto;">
     <table class="table table-striped table-bordered border-dark productsTable" style="width: 100%;">
     <thead class="table text-center" style="background: #202022; color: white">
