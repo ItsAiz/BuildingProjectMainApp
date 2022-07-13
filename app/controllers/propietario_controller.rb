@@ -1,0 +1,3 @@
+class PropietarioController < ApplicationController
+    
+end
