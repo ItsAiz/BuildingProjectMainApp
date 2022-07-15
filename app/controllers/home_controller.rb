@@ -61,10 +61,8 @@ class HomeController < ApplicationController
   def sendPaymentInfo
     require 'rest-client'
     require 'json'
-    info = JSON.parse params[:id]
-    url = 'https://e7b60c0af29de84745f23f1feab8cbc7.loophole.site'
-    RestClient.post url, info
+    url = 'https://543785e5f7e3a688b85a22bb74103b8c.loophole.site/api/v1/pagos/'
+    RestClient.post url, {id: params[:id]}
     redirect_to home_page_path
   end
-  
 end

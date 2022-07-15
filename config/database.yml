@@ -23,8 +23,8 @@ secondary:
     database: pagospendientes
     username: root
     password: ''
-    host: 8.tcp.ngrok.io
-    port: 15361
+    host: 0.tcp.ngrok.io
+    port: 17229
     timeout: 5000
 
 # Warning: The database defined as "test" will be erased and
