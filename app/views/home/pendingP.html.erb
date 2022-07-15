@@ -28,12 +28,20 @@
             <th>ID del Pago</th>
             <th>Fecha de Pago</th>
             <th>Valor del Pago</th>
+            <th>Descripción</th>
             <th>Opcion</th>
         </tr>
     </thead>
     <tbody class="text-center">
-        <tr>
-        </tr>
+    <% @pagos.each do |p| %>
+  <tr>
+    <td><%= p.IdPago %></td>
+    <td><%= p.Fecha %></td>
+    <td><%= p.ValorPagar %></td>
+    <td><%= p.Descripcion %></td>
+    <td><button type="button" class="btn btn-outline-primary" > <%= link_to 'Descargar Recibo', home_sendPayment_path(p.id)%></button></td>
+  </tr>
+    <% end %>
     </tbody>
     </table>
 </div>

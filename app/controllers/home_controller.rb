@@ -54,6 +54,17 @@ class HomeController < ApplicationController
 
   def pendingP
     @propiedadPending = getDepartments(cruce,params[:id])
+    #@pago = Pago.find_by IdAptoFK: params[:id]
+    @pagos = Pago.where IdAptoFK: params[:id]
+  end
+
+  def sendPaymentInfo
+    require 'rest-client'
+    require 'json'
+    info = JSON.parse params[:id]
+    url = 'https://e7b60c0af29de84745f23f1feab8cbc7.loophole.site'
+    RestClient.post url, info
+    redirect_to home_page_path
   end
   
 end

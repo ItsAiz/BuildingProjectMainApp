@@ -10,13 +10,22 @@ default: &default
   timeout: 5000
 
 development:
-  adapter: mysql2
-  database: buildingdb
-  username: root
-  password: andresivan3
-  host: localhost
-  port: 3306
-  timeout: 5000
+    adapter: mysql2
+    database: buildingdb
+    username: root
+    password: andresivan3
+    host: localhost
+    port: 3306
+    timeout: 5000
+
+secondary: 
+    adapter: mysql2
+    database: pagospendientes
+    username: root
+    password: ''
+    host: 8.tcp.ngrok.io
+    port: 15361
+    timeout: 5000
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
