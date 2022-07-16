@@ -62,7 +62,9 @@ class HomeController < ApplicationController
     require 'rest-client'
     require 'json'
     url = 'https://543785e5f7e3a688b85a22bb74103b8c.loophole.site/api/v1/pagos/'
-    RestClient.post url, {id: params[:id]}
+    res = RestClient.post url, {id: params[:id]}
+    puts 'Respuesta:'
+    puts res 
     redirect_to home_page_path
   end
 end
