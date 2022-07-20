@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/pagosRealizados/:id', to: 'home#realizedP', as:'home_realizedP'
   get '/pagosPendientes/:id', to: 'home#pendingP', as:'home_pendingP'
   get '/realizarPagoPendiente/:id', to: 'home#sendPaymentInfo', as: 'home_sendPayment' 
+  get '/recibo/:id', to: 'home#recibo', as: 'home_recibo'
   #get '/prueba', to: 'prueba#prueba'
  # get '/users/:documentNumber', to: 'registratons#findPropietario', as: 'users_find_propietario'
   

@@ -1,4 +1,6 @@
 class PruebaController < ApplicationController
+  layout false
+  layout 'application', :except => :view
   def prueba
     require 'json'
     require 'open-uri'

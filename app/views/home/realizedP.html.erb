@@ -31,8 +31,14 @@
         </tr>
     </thead>
     <tbody class="text-center">
+        <% while @count<@pagos.length %>
         <tr>
+            <td><%= @pagos[@count]['IdPago'] %></td>
+            <td><%= @pagos[@count]['FechaPago']  %></td>
+            <td><%= @pagos[@count]['ValorPago']  %></td>
         </tr>
+            <% @count = @count+1%>
+            <% end %>
     </tbody>
     </table>
 </div>

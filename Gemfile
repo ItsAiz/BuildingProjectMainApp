@@ -46,6 +46,8 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem 'rest-client'
 gem 'ffi'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary', '~> 0.12.3'
 # Use Sass to process CSS
 # gem "sassc-rails"
 

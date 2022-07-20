@@ -49,7 +49,33 @@ class HomeController < ApplicationController
     return propiedad
   end
   def realizedP
+    require 'openssl'
+    require 'base64'
+    require 'rest-client'
+    require 'json'
+    require 'uri'
     @propiedad = getDepartments(cruce,params[:id])
+    url = URI.join("https://90241dfba0ed9f2a3ecf99526049c13c.loophole.site/api/v1/pagos/showPagos/",@propiedad['Identificador'])
+    url = url.to_s
+    res = RestClient.get url
+    private_key_file = "public/private.pem";
+    password = "admin"
+    private_key = OpenSSL::PKey::RSA.new(File.read(private_key_file),password)
+    #res = JSON.parse res.gsub('=>', ':')
+    res = JSON.parse res
+    hash = res.to_a
+    count = 0
+    @descr = []
+    @pagos = []
+    while count < hash.length
+        @descr.push(private_key.private_decrypt(Base64.decode64(hash[count])))
+        @pagos.push(JSON.parse @descr[count].gsub('=>', ':'))
+        count = count + 1
+    end
+    @count = 0
+            #res = private_key.private_decrypt(Base64.decode64(res))
+    #hash_res = JSON.parse res.gsub('=>', ':')
+    #@pagos = hash_res.to_a
   end
 
   def pendingP
@@ -61,10 +87,21 @@ class HomeController < ApplicationController
   def sendPaymentInfo
     require 'rest-client'
     require 'json'
-    url = 'https://543785e5f7e3a688b85a22bb74103b8c.loophole.site/api/v1/pagos/'
-    res = RestClient.post url, {id: params[:id]}
-    puts 'Respuesta:'
-    puts res 
+    id = params[:id]
+    url = 'https://90241dfba0ed9f2a3ecf99526049c13c.loophole.site/api/v1/pagos/'
+    res = RestClient.post url, {id: id}
     redirect_to home_page_path
+  #redirect_to home_recibo_path(id)
+  end
+  def recibo
+    render :layout => false
+    @pago = Pago.find(params[:id])
+    #respond_to do |f|
+     # f.html{render :layout => false}
+      #f.pdf do
+       # render pdf: 'Recibo', template: 'home/recibo.html.erb'
+      #end
+    #end
+    #redirect_to home_page_path
   end
 end
