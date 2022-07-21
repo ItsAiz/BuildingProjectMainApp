@@ -39,7 +39,7 @@
     <td><%= p.Fecha %></td>
     <td><%= p.ValorPagar %></td>
     <td><%= p.Descripcion %></td>
-    <td><button type="button" class="btn btn-outline-primary" > <%= link_to 'Pagar', home_sendPayment_path(p.id)%></button>
+    <td><button type="button" class="btn btn-outline-primary" > <%= link_to 'Pagar', home_recibo_path(p.id)%></button>
     </td>
   </tr>
     <% end %>

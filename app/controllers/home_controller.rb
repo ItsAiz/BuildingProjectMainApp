@@ -55,7 +55,7 @@ class HomeController < ApplicationController
     require 'json'
     require 'uri'
     @propiedad = getDepartments(cruce,params[:id])
-    url = URI.join("https://90241dfba0ed9f2a3ecf99526049c13c.loophole.site/api/v1/pagos/showPagos/",@propiedad['Identificador'])
+    url = URI.join("https://8e032659b60bbd90fb774136dd643f43.loophole.site/api/v1/pagos/showPagos/",@propiedad['Identificador'])
     url = url.to_s
     res = RestClient.get url
     private_key_file = "public/private.pem";
@@ -88,20 +88,42 @@ class HomeController < ApplicationController
     require 'rest-client'
     require 'json'
     id = params[:id]
-    url = 'https://90241dfba0ed9f2a3ecf99526049c13c.loophole.site/api/v1/pagos/'
+    url = 'https://8e032659b60bbd90fb774136dd643f43.loophole.site/api/v1/pagos/'
     res = RestClient.post url, {id: id}
-    redirect_to home_page_path
-  #redirect_to home_recibo_path(id)
+    #redirect_to home_recibo_path(id)
   end
   def recibo
-    render :layout => false
+    #render layout: false
     @pago = Pago.find(params[:id])
+    sendPaymentInfo
+    #respond_to do |format|
+     # format.pdf {send_pdf(@pago)}
+    #end
     #respond_to do |f|
      # f.html{render :layout => false}
       #f.pdf do
-       # render pdf: 'Recibo', template: 'home/recibo.html.erb'
-      #end
+        #render pdf: "Recibo", template: "app/views/home/recibo.html.erb"
+     # end
     #end
     #redirect_to home_page_path
   end
+  def validateExistence
+    @propiedad = getDepartments(cruce,params[:id])
+    @res = Pago.where IdAptoFK: params[:id]
+    if @res.empty?
+      redirect_to home_paz_salvo_path(params[:id])
+    else
+      redirect_to home_page_path
+    end
+  end
+  def pazSalvo
+    @propiedad = getDepartments(cruce,params[:id])
+  end
+  #def send_pdf(pago)
+    # Render the PDF in memory and send as the response
+   # send_data @charge.receipt.render,
+    #  filename: "#{@pago.created_at.strftime("%Y-%m-%d")}-gorails-receipt.pdf",
+     # type: "application/pdf",
+      #disposition: :inline # or :attachment to download
+  #end
 end

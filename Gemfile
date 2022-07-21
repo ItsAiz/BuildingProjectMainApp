@@ -48,6 +48,8 @@ gem 'rest-client'
 gem 'ffi'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary', '~> 0.12.3'
+gem 'receipts'
+#gem 'pdfkit', '~> 0.8.2'
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -76,3 +78,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "matrix", "~> 0.4.2"

@@ -14,8 +14,8 @@ development:
     database: apartamentosky
     username: root
     password: admin
-    host: 8.tcp.ngrok.io
-    port: 17357
+    host: 4.tcp.ngrok.io
+    port: 10343
     timeout: 5000
 
 secondary: 
@@ -23,8 +23,8 @@ secondary:
     database: pagospendientes
     username: root
     password: ''
-    host: 4.tcp.ngrok.io
-    port: 18067
+    host: 2.tcp.ngrok.io
+    port: 14716
     timeout: 5000
 
 # Warning: The database defined as "test" will be erased and

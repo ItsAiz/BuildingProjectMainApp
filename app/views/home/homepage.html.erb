@@ -19,7 +19,7 @@
             <td>
             <button type="button" class="btn btn-outline-primary" > <%= link_to 'Pagos Realizados', home_realizedP_path(@propiedades[@count]['Identificador'])%></button>
             <button type="button" class="btn btn-outline-primary"> <%= link_to 'Pagos Pendientes', home_pendingP_path(@propiedades[@count]['Identificador'])%> </button>
-            <button type="button" class="btn btn-outline-primary"> Paz y Salvo </button>
+            <button type="button" class="btn btn-outline-primary"> <%= link_to 'Paz y Salvo', home_validate_path(@propiedades[@count]['Identificador'])%> </button>
             </td>
         </tr>
             <% @count = @count+1%>
